@@ -1,5 +1,25 @@
 #include "utils.h"
 
+
+// Check if read is mapped with reverse complement: bit #5 has to be 'on'
+bool is_RC(std::bitset<12> binary){
+    if (binary.test(4)) return true;
+    return false;
+}
+
+
+
+
+// Check if read is mapped: bit #3 has to be 'on'
+bool is_mapped(std::bitset<12> binary){
+
+    if (binary.test(2)) return false;
+    return true;
+}
+
+
+
+
 // Splits a std::string into a std::vector of std::strings according to a specified delimiter (default: \t)
 std::vector<std::string> split(std::string str, const std::string delimiter){
 

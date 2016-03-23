@@ -1,13 +1,19 @@
-#ifndef UTILS_H
-#define UTILS_H
+#pragma once
 
 #include <vector>
 #include <string>
 #include <iostream>
 #include <fstream>
 #include <algorithm>
+#include <bitset>
 
 #define LOGOK fprintf(stderr, "ERR : %s:%i\n", __FILE__, __LINE__);
+
+// Check if read is mapped with reverse complement: bit #5 (from the right end) has to be 'on'
+bool is_RC(std::bitset<12> binary);
+
+// Check if read is mapped: bit #3 (from the right end) has to be 'on'
+bool is_mapped(std::bitset<12> binary);
 
 // Generates a conversion table to compute the reverse complement of a DNA sequence
 std::vector<char> generateRevCompTable();
@@ -23,5 +29,3 @@ void resetFileIndex(std::ifstream& file);
 
 // Computes the reverse complement of a DNA sequence using an accession table
 std::string reverseComplement(const std::string& read);
-
-#endif // UTILS_H
